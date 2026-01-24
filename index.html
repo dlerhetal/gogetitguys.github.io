@@ -738,10 +738,6 @@
         <div class="contact-label">Email</div>
         <div class="contact-value"><a href="mailto:ggitguy@gmail.com">ggitguy@gmail.com</a></div>
       </div>
-      <div class="contact-item">
-        <div class="contact-label">Service Area</div>
-        <div class="contact-value">Memphis & Surrounding Areas</div>
-      </div>
     </div>
   </section>
 
@@ -789,57 +785,57 @@
         <form onsubmit="submitIntake(event)">
           <div class="form-group">
             <label>Your Name</label>
-            <input type="text" required>
+            <input type="text" name="contactName" required>
           </div>
           <div class="form-group">
             <label>Business Name</label>
-            <input type="text">
+            <input type="text" name="businessName">
           </div>
           <div class="form-group">
             <label>Phone</label>
-            <input type="tel" required>
+            <input type="tel" name="contactPhone" required>
           </div>
           <div class="form-group">
             <label>Email</label>
-            <input type="email" required>
+            <input type="email" name="contactEmail" required>
           </div>
           <div class="form-group">
             <label>Type of Inventory</label>
-            <select required>
+            <select name="inventoryType" required>
               <option value="">Select one...</option>
-              <option value="vehicles">Vehicles & Trailers</option>
-              <option value="equipment">Heavy Equipment & Machinery</option>
-              <option value="parts">Parts & Components</option>
-              <option value="tools">Tools & Shop Equipment</option>
-              <option value="materials">Materials & Supplies</option>
-              <option value="mixed">Mixed / Multiple Categories</option>
-              <option value="other">Other</option>
+              <option value="Vehicles & Trailers">Vehicles & Trailers</option>
+              <option value="Heavy Equipment & Machinery">Heavy Equipment & Machinery</option>
+              <option value="Parts & Components">Parts & Components</option>
+              <option value="Tools & Shop Equipment">Tools & Shop Equipment</option>
+              <option value="Materials & Supplies">Materials & Supplies</option>
+              <option value="Mixed / Multiple Categories">Mixed / Multiple Categories</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div class="form-group">
             <label>Estimated Number of Items</label>
-            <select required>
+            <select name="itemCount" required>
               <option value="">Select one...</option>
-              <option value="1-10">1-10 items</option>
-              <option value="11-25">11-25 items</option>
-              <option value="26-50">26-50 items</option>
-              <option value="51-100">51-100 items</option>
-              <option value="100+">100+ items</option>
+              <option value="1-10 items">1-10 items</option>
+              <option value="11-25 items">11-25 items</option>
+              <option value="26-50 items">26-50 items</option>
+              <option value="51-100 items">51-100 items</option>
+              <option value="100+ items">100+ items</option>
             </select>
           </div>
           <div class="form-group">
             <label>Timeline</label>
-            <select required>
+            <select name="timeline" required>
               <option value="">Select one...</option>
-              <option value="asap">As soon as possible</option>
-              <option value="30days">Within 30 days</option>
-              <option value="90days">Within 90 days</option>
-              <option value="flexible">Flexible / No rush</option>
+              <option value="As soon as possible">As soon as possible</option>
+              <option value="Within 30 days">Within 30 days</option>
+              <option value="Within 90 days">Within 90 days</option>
+              <option value="Flexible / No rush">Flexible / No rush</option>
             </select>
           </div>
           <div class="form-group">
             <label>Anything else we should know?</label>
-            <textarea placeholder="Location details, special circumstances, etc."></textarea>
+            <textarea name="notes" placeholder="Location details, special circumstances, etc."></textarea>
           </div>
           <button type="submit" class="form-submit">SUBMIT</button>
         </form>
@@ -877,9 +873,45 @@
     
     function submitIntake(e) {
       e.preventDefault();
-      // For now, just show an alert - later hook up to email/CRM
-      alert('Thank you. We will contact you within one business day.');
-      closeIntake();
+      
+      var form = e.target;
+      var submitBtn = form.querySelector('.form-submit');
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'SUBMITTING...';
+      submitBtn.disabled = true;
+      
+      var data = {
+        contactName: form.querySelector('input[name="contactName"]').value,
+        businessName: form.querySelector('input[name="businessName"]').value,
+        contactPhone: form.querySelector('input[name="contactPhone"]').value,
+        contactEmail: form.querySelector('input[name="contactEmail"]').value,
+        inventoryType: form.querySelector('select[name="inventoryType"]').value,
+        itemCount: form.querySelector('select[name="itemCount"]').value,
+        timeline: form.querySelector('select[name="timeline"]').value,
+        notes: form.querySelector('textarea[name="notes"]').value
+      };
+      
+      fetch('https://script.google.com/macros/s/AKfycbwyP4JOLr9hc4ZNTlppZiFlbhkSlb5Zkd6n1N3ueynWtTgHTUiK1JVt0mxIRt4Ge0lA/exec', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(function() {
+        alert('Thank you. We will contact you within one business day.');
+        form.reset();
+        closeIntake();
+      })
+      .catch(function(error) {
+        alert('Something went wrong. Please call us at 901.570.7600');
+        console.error(error);
+      })
+      .finally(function() {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
     }
     
     // Close modals on overlay click
