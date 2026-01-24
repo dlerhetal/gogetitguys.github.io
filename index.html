@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Get It Guys | Inventory Liquidation Specialists</title>
+  <meta name="description" content="Professional inventory liquidation services for businesses. We handle the process, you get paid. Serving Memphis and surrounding areas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --black: #1a1a1a;
+      --dark-grey: #333333;
+      --mid-grey: #666666;
+      --light-grey: #f5f5f5;
+      --yellow: #FFCC00;
+      --yellow-dark: #E6B800;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Oswald', Arial, sans-serif;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.6;
+      background: #fff;
+    }
+    
+    /* Header */
+    header {
+      background: var(--black);
+      padding: 12px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    
+    .logo svg {
+      width: 50px;
+      height: 25px;
+    }
+    
+    .logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .header-phone {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: var(--yellow);
+      text-decoration: none;
+    }
+    
+    .header-phone:hover {
+      color: #fff;
+    }
+    
+    .client-login {
+      font-family: 'Oswald', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      color: #999;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid #444;
+      transition: all 0.3s ease;
+    }
+    
+    .client-login:hover {
+      color: #fff;
+      border-color: #666;
+    }
+    
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--black) 0%, #252525 100%);
+      padding: 150px 30px 100px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 64px;
+      letter-spacing: 4px;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    
+    .hero h1 span {
+      color: var(--yellow);
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      font-weight: 400;
+      color: #aaa;
+      max-width: 550px;
+      margin: 0 auto 45px;
+      letter-spacing: 1px;
+    }
+    
+    .hero-ctas {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .cta-primary {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      padding: 16px 45px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-primary:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+    
+    .cta-secondary {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      padding: 14px 45px;
+      text-decoration: none;
+      border: 2px solid #fff;
+      transition: all 0.3s ease;
+    }
+    
+    .cta-secondary:hover {
+      background: #fff;
+      color: var(--black);
+      transform: translateY(-2px);
+    }
+    
+    .cta-subtext {
+      font-size: 11px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 6px;
+    }
+    
+    .cta-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    /* What We Do */
+    .what-we-do {
+      padding: 80px 30px;
+      background: var(--light-grey);
+    }
+    
+    .section-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 42px;
+      letter-spacing: 3px;
+      text-align: center;
+      margin-bottom: 50px;
+      color: var(--black);
+    }
+    
+    .section-title span {
+      color: var(--yellow);
+      background: var(--black);
+      padding: 0 15px;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+    
+    .service-card {
+      background: #fff;
+      padding: 35px 30px;
+      border-bottom: 4px solid var(--yellow);
+      transition: transform 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .service-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+    
+    .service-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+    
+    .service-card p {
+      font-size: 15px;
+      color: var(--mid-grey);
+      line-height: 1.6;
+    }
+    
+    /* How It Works */
+    .how-it-works {
+      padding: 80px 30px;
+      background: #fff;
+    }
+    
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 50px;
+      position: relative;
+    }
+    
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 3px;
+      background: var(--yellow);
+      z-index: 1;
+    }
+    
+    .step {
+      text-align: center;
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .step-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      color: var(--black);
+      background: var(--yellow);
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    
+    .step h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+    
+    .step p {
+      font-size: 14px;
+      color: var(--mid-grey);
+      line-height: 1.5;
+    }
+    
+    /* Who We Help */
+    .who-we-help {
+      padding: 80px 30px;
+      background: var(--black);
+      color: #fff;
+    }
+    
+    .who-we-help .section-title {
+      color: #fff;
+    }
+    
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .industry-tag {
+      background: transparent;
+      border: 2px solid var(--yellow);
+      color: var(--yellow);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      padding: 12px 28px;
+      transition: all 0.3s ease;
+    }
+    
+    .industry-tag:hover {
+      background: var(--yellow);
+      color: var(--black);
+    }
+    
+    /* Contact */
+    .contact {
+      padding: 80px 30px;
+      background: var(--yellow);
+      text-align: center;
+    }
+    
+    .contact h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 3px;
+      color: var(--black);
+      margin-bottom: 35px;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+    
+    .contact-item {
+      text-align: center;
+    }
+    
+    .contact-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--dark-grey);
+      margin-bottom: 5px;
+    }
+    
+    .contact-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: var(--black);
+    }
+    
+    .contact-value a {
+      color: var(--black);
+      text-decoration: none;
+    }
+    
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--black);
+      padding: 25px 30px;
+      text-align: center;
+    }
+    
+    .footer-text {
+      color: #555;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+    
+    /* ========== MODAL / OVERLAY STYLES ========== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-overlay.active {
+      display: flex;
+    }
+    
+    .modal {
+      background: #fff;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    
+    .modal-header {
+      background: var(--black);
+      padding: 25px 30px;
+      color: #fff;
+    }
+    
+    .modal-header h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+    
+    .modal-header p {
+      font-size: 14px;
+      color: #999;
+      margin-top: 5px;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #666;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    
+    .modal-close:hover {
+      color: var(--yellow);
+    }
+    
+    .modal-body {
+      padding: 30px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dark-grey);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      background: #fff;
+      transition: border-color 0.3s ease;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--yellow);
+    }
+    
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .form-submit {
+      width: 100%;
+      background: var(--yellow);
+      color: var(--black);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 2px;
+      padding: 15px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    
+    .form-submit:hover {
+      background: var(--black);
+      color: var(--yellow);
+    }
+    
+    /* Login Modal */
+    .login-modal .modal {
+      max-width: 400px;
+    }
+    
+    .login-error {
+      display: none;
+      background: #fee;
+      border: 1px solid #c00;
+      color: #900;
+      padding: 12px 15px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .login-error.show {
+      display: block;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      
+      .process-steps::before {
+        display: none;
+      }
+      
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .header-nav {
+        gap: 15px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .header-nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .hero h1 {
+        font-size: 36px;
+      }
+      
+      .hero-subtitle {
+        font-size: 16px;
+      }
+      
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 180 90">
+          <g transform="translate(5, 10) scale(0.9)"><path fill="#444" d="M35 5 C15 5 0 20 0 40 C0 60 15 75 35 75 C50 75 62 65 65 50 L45 50 L45 45 L70 45 L70 55 C65 72 52 82 35 82 C10 82 -8 62 -8 40 C-8 18 10 -2 35 -2 C52 -2 66 8 72 23 L62 28 C58 17 48 8 35 8 Z"/></g>
+          <g transform="translate(20, 7) scale(0.9)"><path fill="#666" d="M35 5 C15 5 0 20 0 40 C0 60 15 75 35 75 C50 75 62 65 65 50 L45 50 L45 45 L70 45 L70 55 C65 72 52 82 35 82 C10 82 -8 62 -8 40 C-8 18 10 -2 35 -2 C52 -2 66 8 72 23 L62 28 C58 17 48 8 35 8 Z"/></g>
+          <g transform="translate(35, 4) scale(0.9)"><path fill="#FFCC00" d="M35 5 C15 5 0 20 0 40 C0 60 15 75 35 75 C50 75 62 65 65 50 L45 50 L45 45 L70 45 L70 55 C65 72 52 82 35 82 C10 82 -8 62 -8 40 C-8 18 10 -2 35 -2 C52 -2 66 8 72 23 L62 28 C58 17 48 8 35 8 Z"/></g>
+        </svg>
+        <span class="logo-text">GO GET IT GUYS</span>
+      </a>
+      <nav class="header-nav">
+        <a href="tel:9015707600" class="header-phone">901.570.7600</a>
+        <a href="#" class="client-login" onclick="openLogin(event)">Client Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>INVENTORY <span>LIQUIDATION</span><br>SPECIALISTS</h1>
+    <div class="hero-ctas">
+      <div class="cta-wrapper">
+        <a href="#" class="cta-primary" onclick="openIntake(event)">START THE PROCESS</a>
+        <span class="cta-subtext">Tell us what you have</span>
+      </div>
+      <div class="cta-wrapper">
+        <a href="#contact" class="cta-secondary">SCHEDULE A SITE VISIT</a>
+        <span class="cta-subtext">We'll come to you</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Do -->
+  <section class="what-we-do">
+    <div class="section-inner">
+      <h2 class="section-title">WHAT <span>WE DO</span></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-number">01</div>
+          <h3>INVENTORY & VALUATION</h3>
+          <p>We document your inventory, research current market values, and identify the right sales channels for maximum recovery.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">02</div>
+          <h3>BUYER MATCHING</h3>
+          <p>Dealers, auction houses, direct buyers, wholesalers. We connect your inventory with the right buyers at the right price.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-number">03</div>
+          <h3>TRANSACTION MANAGEMENT</h3>
+          <p>Negotiations, paperwork, title transfers, pickup coordination. We handle the process from agreement to payment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <div class="section-inner">
+      <h2 class="section-title">HOW IT <span>WORKS</span></h2>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>SITE VISIT</h3>
+          <p>We walk your yard and document what you have.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>LIQUIDATION PLAN</h3>
+          <p>You receive a clear plan with realistic recovery estimates.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>EXECUTION</h3>
+          <p>We find buyers, close deals, and coordinate logistics.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>PAYMENT</h3>
+          <p>As items sell, you receive your proceeds.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Help -->
+  <section class="who-we-help">
+    <div class="section-inner">
+      <h2 class="section-title">WHO WE <span>WORK WITH</span></h2>
+      <div class="industries">
+        <span class="industry-tag">AUTO REPAIR</span>
+        <span class="industry-tag">BODY SHOPS</span>
+        <span class="industry-tag">HEAVY EQUIPMENT</span>
+        <span class="industry-tag">GENERAL CONTRACTORS</span>
+        <span class="industry-tag">MANUFACTURERS</span>
+        <span class="industry-tag">FLEET OPERATIONS</span>
+        <span class="industry-tag">SALVAGE & RECYCLING</span>
+        <span class="industry-tag">MACHINE SHOPS</span>
+        <span class="industry-tag">RESTORATION</span>
+        <span class="industry-tag">AGRICULTURE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>CONTACT</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-label">Phone</div>
+        <div class="contact-value"><a href="tel:9015707600">901.570.7600</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value"><a href="mailto:ggitguy@gmail.com">ggitguy@gmail.com</a></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Service Area</div>
+        <div class="contact-value">Memphis & Surrounding Areas</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-text">© 2025 Go Get It Guys, LLC. All rights reserved.</p>
+  </footer>
+
+  <!-- ========== LOGIN MODAL ========== -->
+  <div class="modal-overlay login-modal" id="loginModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeLogin()">&times;</button>
+      <div class="modal-header">
+        <h3>CLIENT LOGIN</h3>
+        <p>Access your inventory dashboard</p>
+      </div>
+      <div class="modal-body">
+        <div class="login-error" id="loginError">
+          Invalid username or password. Please try again or contact support.
+        </div>
+        <form onsubmit="attemptLogin(event)">
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="loginUser" required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPass" required>
+          </div>
+          <button type="submit" class="form-submit">LOG IN</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== INTAKE FORM MODAL ========== -->
+  <div class="modal-overlay" id="intakeModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeIntake()">&times;</button>
+      <div class="modal-header">
+        <h3>START THE PROCESS</h3>
+        <p>Tell us about your inventory</p>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="submitIntake(event)">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" required>
+          </div>
+          <div class="form-group">
+            <label>Business Name</label>
+            <input type="text">
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" required>
+          </div>
+          <div class="form-group">
+            <label>Type of Inventory</label>
+            <select required>
+              <option value="">Select one...</option>
+              <option value="vehicles">Vehicles & Trailers</option>
+              <option value="equipment">Heavy Equipment & Machinery</option>
+              <option value="parts">Parts & Components</option>
+              <option value="tools">Tools & Shop Equipment</option>
+              <option value="materials">Materials & Supplies</option>
+              <option value="mixed">Mixed / Multiple Categories</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Estimated Number of Items</label>
+            <select required>
+              <option value="">Select one...</option>
+              <option value="1-10">1-10 items</option>
+              <option value="11-25">11-25 items</option>
+              <option value="26-50">26-50 items</option>
+              <option value="51-100">51-100 items</option>
+              <option value="100+">100+ items</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Timeline</label>
+            <select required>
+              <option value="">Select one...</option>
+              <option value="asap">As soon as possible</option>
+              <option value="30days">Within 30 days</option>
+              <option value="90days">Within 90 days</option>
+              <option value="flexible">Flexible / No rush</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Anything else we should know?</label>
+            <textarea placeholder="Location details, special circumstances, etc."></textarea>
+          </div>
+          <button type="submit" class="form-submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Login Modal
+    function openLogin(e) {
+      e.preventDefault();
+      document.getElementById('loginModal').classList.add('active');
+      document.getElementById('loginError').classList.remove('show');
+    }
+    
+    function closeLogin() {
+      document.getElementById('loginModal').classList.remove('active');
+    }
+    
+    function attemptLogin(e) {
+      e.preventDefault();
+      // Always show error - login doesn't work yet
+      document.getElementById('loginError').classList.add('show');
+    }
+    
+    // Intake Modal
+    function openIntake(e) {
+      e.preventDefault();
+      document.getElementById('intakeModal').classList.add('active');
+    }
+    
+    function closeIntake() {
+      document.getElementById('intakeModal').classList.remove('active');
+    }
+    
+    function submitIntake(e) {
+      e.preventDefault();
+      // For now, just show an alert - later hook up to email/CRM
+      alert('Thank you. We will contact you within one business day.');
+      closeIntake();
+    }
+    
+    // Close modals on overlay click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.remove('active');
+        }
+      });
+    });
+    
+    // Close modals on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+      }
+    });
+  </script>
+
+</body>
+</html>
