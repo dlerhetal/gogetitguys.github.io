@@ -357,6 +357,56 @@
       color: var(--black);
     }
     
+    /* Resources */
+    .resources {
+      padding: 80px 30px;
+      background: var(--light-grey);
+    }
+    
+    .resources .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+    }
+    
+    .resource-card {
+      background: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      text-decoration: none;
+      border-bottom: 4px solid var(--yellow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .resource-icon {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+    
+    .resource-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    
+    .resource-card p {
+      font-size: 13px;
+      color: var(--mid-grey);
+      line-height: 1.4;
+    }
+    
     /* Contact */
     .contact {
       padding: 80px 30px;
@@ -575,6 +625,10 @@
         display: none;
       }
       
+      .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
       .hero h1 {
         font-size: 48px;
       }
@@ -606,6 +660,10 @@
       .hero-ctas {
         flex-direction: column;
         align-items: center;
+      }
+      
+      .resources-grid {
+        grid-template-columns: 1fr;
       }
       
       .process-steps {
@@ -644,12 +702,12 @@
     <h1>INVENTORY <span>LIQUIDATION</span><br>SPECIALISTS</h1>
     <div class="hero-ctas">
       <div class="cta-wrapper">
-        <a href="#" class="cta-primary" onclick="openIntake(event)">START THE PROCESS</a>
-        <span class="cta-subtext">Tell us what you have</span>
+        <a href="#" class="cta-primary" onclick="openLogin(event)">SUBMIT INVENTORY</a>
+        <span class="cta-subtext">Client login</span>
       </div>
       <div class="cta-wrapper">
-        <a href="#contact" class="cta-secondary">SCHEDULE A SITE VISIT</a>
-        <span class="cta-subtext">We'll come to you</span>
+        <a href="#" class="cta-secondary" onclick="openIntake(event)">REQUEST CONSULTATION</a>
+        <span class="cta-subtext">We come to you</span>
       </div>
     </div>
   </section>
@@ -726,6 +784,35 @@
     </div>
   </section>
 
+  <!-- Resources -->
+  <section class="resources">
+    <div class="section-inner">
+      <h2 class="section-title">RESOURCES</h2>
+      <div class="resources-grid">
+        <a href="ggig-client-checklist.pdf" class="resource-card" download>
+          <div class="resource-icon">📋</div>
+          <h3>CLIENT CHECKLIST</h3>
+          <p>What we need to get started</p>
+        </a>
+        <a href="ggig-photo-guidelines.pdf" class="resource-card" download>
+          <div class="resource-icon">📷</div>
+          <h3>PHOTO GUIDELINES</h3>
+          <p>How to photograph your inventory</p>
+        </a>
+        <a href="ggig-inventory-system.pdf" class="resource-card" download>
+          <div class="resource-icon">📄</div>
+          <h3>INVENTORY SCHEDULE</h3>
+          <p>Template for documenting items</p>
+        </a>
+        <a href="ggig-consignment-agreement.pdf" class="resource-card" download>
+          <div class="resource-icon">📝</div>
+          <h3>CONSIGNMENT AGREEMENT</h3>
+          <p>Review our standard terms</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section class="contact" id="contact">
     <h2>CONTACT</h2>
@@ -736,7 +823,7 @@
       </div>
       <div class="contact-item">
         <div class="contact-label">Email</div>
-        <div class="contact-value"><a href="mailto:ggitguy@gmail.com">ggitguy@gmail.com</a></div>
+        <div class="contact-value"><a href="mailto:info@gogetitguys.com">info@gogetitguys.com</a></div>
       </div>
     </div>
   </section>
@@ -756,7 +843,7 @@
       </div>
       <div class="modal-body">
         <div class="login-error" id="loginError">
-          Invalid username or password. Please try again or contact support.
+          Invalid username or password. Contact us at 901.570.7600 or info@gogetitguys.com.
         </div>
         <form onsubmit="attemptLogin(event)">
           <div class="form-group">
@@ -778,7 +865,7 @@
     <div class="modal">
       <button class="modal-close" onclick="closeIntake()">&times;</button>
       <div class="modal-header">
-        <h3>START THE PROCESS</h3>
+        <h3>REQUEST CONSULTATION</h3>
         <p>Tell us about your inventory</p>
       </div>
       <div class="modal-body">
