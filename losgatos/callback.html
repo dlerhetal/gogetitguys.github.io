@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connecting...</title>
+    <style>
+        body { font-family: Calibri, sans-serif; text-align: center; padding: 3rem; color: #222; }
+        h2 { color: #1A3C6E; }
+    </style>
+</head>
+<body>
+    <h2>Connecting to QuickBooks...</h2>
+    <p>Redirecting to your local application. If nothing happens, check that the middleware is running on localhost:8080.</p>
+    <script>
+        var params = window.location.search;
+        window.location.href = "http://localhost:8080/callback" + params;
+    </script>
+</body>
+</html>
